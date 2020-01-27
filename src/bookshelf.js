@@ -1,5 +1,5 @@
-import React from 'react';
-import Book from './book';
+import React from 'react'
+import Book from './book'
 
 const Bookshelf = (props) => (
   <div className="bookshelf">

@@ -5,6 +5,7 @@ import ReactLoading from 'react-loading'
 
 
 class Search extends Component {
+    //on typing new search query
     handleInputChange = (e) => {
         const target = e.target
         const query = target.value

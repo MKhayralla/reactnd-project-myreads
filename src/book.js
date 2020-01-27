@@ -3,12 +3,13 @@ import React from 'react'
 const Book = (props) => (
     <div className="book">
         <div className="book-top">
-            <div className="book-cover" style={{
+            <div className="book-cover" style={/*styles and missing image handling*/{
                 width: 128, height: 188,
                 backgroundImage: (props.book.imageLinks) ?`url("${props.book.imageLinks.thumbnail}")` : null
             }}></div>
             <div className="book-shelf-changer">
                 <select value={props.book.shelf} onChange={(e) => {
+                    //change shelf on new selection
                     let option = e.target ;                    
                     props.changeShelf(props.book, option.value)
                 }}>

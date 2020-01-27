@@ -8,11 +8,13 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
+  //state contains shelf book, search results and loading indicator to pass down to children
   state = {
     books: [],
     searchResults: [],
     searching : false
   }
+  //fetch books on loading
   componentDidMount = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({
@@ -20,6 +22,7 @@ class BooksApp extends React.Component {
       })
     })
   }
+  //change the book shelf 
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((res) => {
       BooksAPI.getAll().then((results) => {
@@ -29,8 +32,9 @@ class BooksApp extends React.Component {
       })
     })
   }
+  //search for books
   handle_search = (query) => {
-    
+    //empty query
     if (!query || query.trim() === '') {
       
       this.setState({
@@ -38,11 +42,12 @@ class BooksApp extends React.Component {
       })
       return ;
     }
-    
+    //start searching
     this.setState({
       searching : true
     })
     BooksAPI.search(query).then((results) => {
+      //match results with personal books
       const output = results.map((result) => {
         let found = this.state.books.find((book) => book.id === result.id) ;
         return found ? found : result ;
@@ -54,13 +59,14 @@ class BooksApp extends React.Component {
     }).catch(
       () => {
         this.setState({
+          //empty results for failed queries
           searchResults : [],
           searching : false
         })
       }
     )
   }
-
+  //rendering the component
   render = () => (
     <div className="app">
       <Switch>
