@@ -36,11 +36,11 @@ class Book extends Component {
                         {/*the checked class is to determine which shelf is the book on*/}
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading"
-                            className={this.state.shelf && this.props.book.shelf === "currentlyReading" && 'checked'}>Currently Reading</option>
+                            className={(this.state.shelf && this.props.book.shelf === "currentlyReading" && 'checked')||''}>Currently Reading</option>
                         <option value="wantToRead"
-                            className={this.state.shelf && this.props.book.shelf === "wantToRead" && 'checked'}>Want to Read</option>
+                            className={(this.state.shelf && this.props.book.shelf === "wantToRead" && 'checked')||''}>Want to Read</option>
                         <option value="read"
-                            className={this.state.shelf && this.props.book.shelf === "read" && 'checked'}>Read</option>
+                            className={(this.state.shelf && this.props.book.shelf === "read" && 'checked')||''}>Read</option>
                         {this.state.shelf ? (
                             <option value="none">None</option>
                         ) : (
