@@ -4,6 +4,13 @@ class Book extends Component {
     state = {
         shelf: true
     }
+    componentDidMount = () =>{
+        if (this.props.book.shelf) {
+            this.setState({shelf : true})
+        } else {
+            this.setState({shelf : false})
+        }
+    }
     render = () => (
         <div className="book">
             <div className="book-top">
