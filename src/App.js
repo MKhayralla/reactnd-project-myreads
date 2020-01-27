@@ -22,12 +22,22 @@ class BooksApp extends React.Component {
       })
     })
   }
+  //match search results with personal books
+  match = (bookList) =>{
+    return bookList.map((result) => {
+      let found = this.state.books.find((book) => book.id === result.id) ;
+      return found ? found : result ;
+    })
+  }
   //change the book shelf 
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((res) => {
       BooksAPI.getAll().then((results) => {
-        this.setState({
-          books : results
+        this.setState((currentState) =>{
+          let nextState = currentState ;
+          nextState.books = results ;
+          nextState.searchResults = this.match(currentState.searchResults) ;
+          return nextState ;
         })
       })
     })
@@ -48,10 +58,7 @@ class BooksApp extends React.Component {
     })
     BooksAPI.search(query).then((results) => {
       //match results with personal books
-      const output = results.map((result) => {
-        let found = this.state.books.find((book) => book.id === result.id) ;
-        return found ? found : result ;
-      })
+      const output = this.match(results)
       this.setState({
         searchResults: output,
         searching : false
