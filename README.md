@@ -4,6 +4,7 @@
 This is the first project of three in 'React Nano Degree from Udacity'
 
 The app is presenting a book reading manager for searching for books and organizing them into shelves
+
 It's an educational project on the fundamentals of React
 
 To get the app started right away:
@@ -11,7 +12,7 @@ To get the app started right away:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## What's included Getting
+## What's included :
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
