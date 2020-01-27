@@ -1,3 +1,4 @@
+//static array for testing before API integration
 const books = [
         {
             title: "The Linux Command Line",
