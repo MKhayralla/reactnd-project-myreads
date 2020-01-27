@@ -105,6 +105,7 @@ body, .app {
   left: 15px;
   width: 50px;
   height: 53px;
+  background-color: antiquewhite ;
   background-image: url('./icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -203,14 +204,15 @@ option.checked {
 }
 .loading {
   position: absolute ;
-  top : 300px ;
-  left : 300px ;
+  top : 20% ;
+  left : 20% ;
 }
 .announcement {
   color: #999 ;
   position: absolute ;
-  top: 400px ;
+  top: 20% ;
   left: 20% ;
   text-align: center ;
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  font-weight: 200 ;
 }

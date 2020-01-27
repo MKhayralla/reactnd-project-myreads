@@ -104,7 +104,7 @@ class BooksApp extends React.Component {
               ))}
             </div>
             <div className="open-search">
-              <Link to='/search'><button>Add a book</button></Link>
+              <Link to='/search'><button onClick={() => this.setState({searchResults : []})}>Add a book</button></Link>
             </div>
           </div>
         )} />
