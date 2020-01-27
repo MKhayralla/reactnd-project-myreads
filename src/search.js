@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { throttle } from 'throttle-debounce'
 import Book from './book'
 import ReactLoading from 'react-loading'
 
 
 class Search extends Component {
+    constructor(props){
+        super(props) ;
+        this.throttledSearch = throttle(1000, this.props.handleChange)
+    }
     //on typing new search query
     handleInputChange = (e) => {
-        const target = e.target
-        const query = target.value
-        this.props.handleChange(query)
+        const target = e.target ;
+        const query = target.value ;
+        this.throttledSearch(query) ;
     }
     render = () => (
         <div className="search-books">
@@ -40,7 +45,7 @@ class Search extends Component {
                                     </li>
                                 ))}
                             </ol>
-                        </div>) : (<h1 className="announcement">No Books Found !</h1>)
+                        </div>) : (<h1 className="announcement">No Books! Start searching or enter another query</h1>)
                 )}
 
         </div>

@@ -19,7 +19,7 @@ class Book extends Component {
                     backgroundImage: (this.props.book.imageLinks) ? `url("${this.props.book.imageLinks.thumbnail}")` : null
                 }}></div>
                 <div className="book-shelf-changer">
-                    <select value={this.props.book.shelf} onChange={(e) => {
+                    <select value={this.props.book.shelf || 'none'} onChange={(e) => {
                         //change shelf on new selection
                         let option = e.target
                         if (option.value === 'none') {
@@ -34,7 +34,7 @@ class Book extends Component {
                         this.props.changeShelf(this.props.book, option.value)
                     }}>
                         {/*the checked class is to determine which shelf is the book on*/}
-                        <option value="move" disabled defaultValue>Move to...</option>
+                        <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading"
                             className={this.state.shelf && this.props.book.shelf === "currentlyReading" && 'checked'}>Currently Reading</option>
                         <option value="wantToRead"
